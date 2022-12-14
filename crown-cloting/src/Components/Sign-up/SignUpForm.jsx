@@ -3,6 +3,8 @@ import React from "react";
 import { useState } from "react";
 import "../Sign-up/SignUp-Form.scss";
 import Button from "../Button/ButtonComponent";
+import { useContext } from "react";
+import { userContext } from "../../Contexts/Contexts";
 import {
   createAuthWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -38,6 +40,7 @@ const SignUpForm = () => {
     try {
       const { user } = await createAuthWithEmailAndPassword(email, password);
       await createUserDocumentFromAuth(user, { displayName }); //google provide display name will be null
+      // setCurrentUser(user);  used observer pattern
       resetFormFeilds();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
