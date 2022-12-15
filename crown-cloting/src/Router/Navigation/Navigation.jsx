@@ -3,15 +3,20 @@ import "../Navigation/navigation.styles.scss";
 import { Outlet, Link } from "react-router-dom";
 import crown from "../../assets/crown.svg";
 import { useContext } from "react";
+import CartIcon from "../../Components/Cart-icon/CartIconComponent";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { userContext } from "../../Contexts/Contexts";
+import CartDropDown from "../../Components/CartDropDown/CartDropDown";
+import { CartContext } from "../../Contexts/CartContext";
+
 const Navigation = () => {
   const { currentUser } = useContext(userContext);
-
+  const { isCartOpen } = useContext(CartContext);
   // const signOutHandler = async () => {
   //   await signOutUser();
   //   // setCurrentUser(null);         used observer pattern
   // };
+
   return (
     <>
       <div className="navigation">
@@ -33,7 +38,9 @@ const Navigation = () => {
               Sign In
             </Link>
           )}
+          <CartIcon />
         </div>
+        {isCartOpen && <CartDropDown />}
       </div>
       <Outlet />
     </>
