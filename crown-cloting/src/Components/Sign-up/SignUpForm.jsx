@@ -48,7 +48,6 @@ const SignUpForm = () => {
       } else {
         console.log(error);
       }
-      console.log(error);
     }
   };
   return (
