@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import SHOP_DATA from "../shop-Data";
+// import SHOP_DATA from "../shop-Data";
 import {
   addCollectionAndDocuments,
   getCategoriesAndDocuments,

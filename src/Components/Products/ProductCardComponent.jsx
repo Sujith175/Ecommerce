@@ -5,9 +5,10 @@ import Button from "../Button/ButtonComponent";
 import { useContext } from "react";
 import { CartContext } from "../../Contexts/CartContext";
 const ProductCard = ({ products }) => {
-  const { addItemtoCart } = useContext(CartContext);
+  const { addItemToCart } = useContext(CartContext);
+
   const { name, price, imageUrl } = products;
-  const addProductToCart = () => addItemtoCart(products);
+  const addProductToCart = () => addItemToCart(products);
 
   return (
     <ProductCartContainer>
