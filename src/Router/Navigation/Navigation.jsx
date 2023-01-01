@@ -1,11 +1,11 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import { Outlet, Link } from "react-router-dom";
 import crown from "../../assets/crown.svg";
 import { useContext } from "react";
 import CartIcon from "../../Components/Cart-icon/CartIconComponent";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-import { userContext } from "../../Contexts/Contexts";
+import { selectCurrentUser } from "../../Store/User/userSelector";
 import CartDropDown from "../../Components/CartDropDown/CartDropDown";
 import { CartContext } from "../../Contexts/CartContext";
 import {
@@ -15,8 +15,8 @@ import {
   NavLinks,
 } from "./navigation.styles";
 const Navigation = () => {
-  const { currentUser } = useContext(userContext);
   const { isCartOpen } = useContext(CartContext);
+  const currentUser = useSelector(selectCurrentUser);
   // const signOutHandler = async () => {
   //   await signOutUser();
   //   // setCurrentUser(null);         used observer pattern

@@ -51,12 +51,17 @@ const cartReducer = (state, action) => {
         ...state,
         ...payload,
       };
+    case CART_ACTION_TYPES.SET_IS_CART_OPEN:
+      return {
+        ...state,
+        isCartOpen: payload,
+      };
     default:
       throw new Error(`Unhandled type ${type} in cartReducer`);
   }
 };
 const clearCartItems = (cartItems, cartItemToClear) => {
-  cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
+  return cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 };
 export const CartContext = createContext({
   isCartOpen: false,
@@ -70,11 +75,8 @@ export const CartContext = createContext({
 });
 
 export const CartProvider = ({ children }) => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [{ cartCount, cartTotal, cartItems }, dispatch] = useReducer(
-    cartReducer,
-    INITIAL_STATE
-  );
+  const [{ cartCount, cartTotal, cartItems, isCartOpen }, dispatch] =
+    useReducer(cartReducer, INITIAL_STATE);
   const updateCartitemReducer = (cartItems) => {
     const newCartCount = cartItems.reduce(
       (total, cartItem) => total + cartItem.quantity,
@@ -104,6 +106,9 @@ export const CartProvider = ({ children }) => {
   const clearItemFromCart = (cartItemToClear) => {
     const newCartItems = clearCartItems(cartItems, cartItemToClear);
     updateCartitemReducer(newCartItems);
+  };
+  const setIsCartOpen = (bool) => {
+    dispatch({ type: CART_ACTION_TYPES.SET_IS_CART_OPEN, payload: bool });
   };
   const value = {
     isCartOpen,
