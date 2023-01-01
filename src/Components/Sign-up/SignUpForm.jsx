@@ -3,8 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { SignUpContainer } from "./SignUp-Form";
 import Button, { BUTTON_TYPES_CLASSES } from "../Button/ButtonComponent";
-import { useContext } from "react";
-import { userContext } from "../../Contexts/Contexts";
+
 import {
   createAuthWithEmailAndPassword,
   createUserDocumentFromAuth,
