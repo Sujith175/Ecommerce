@@ -1,15 +1,11 @@
 import CATEGORY_ACTION_TYPES from "./categoryTypes";
 
-const CATEGORIES_INITIAL_STATE = {
+const INITIANL_STATE = {
   categories: [],
 };
 
-export const categoriesReducer = (
-  state = CATEGORIES_INITIAL_STATE,
-  action = {}
-) => {
+export const categoriesReducer = (state = INITIANL_STATE, action = {}) => {
   const { type, payload } = action;
-
   switch (type) {
     case CATEGORY_ACTION_TYPES.SET_CATEGORIES:
       return {
