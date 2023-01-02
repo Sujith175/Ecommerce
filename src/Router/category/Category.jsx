@@ -5,11 +5,13 @@ import { selectCategoriesMap } from "../../Store/User/Categories/categorySelecto
 import { CategoryContainer, Categorytitle } from "./Category.styles";
 import ProductCard from "../../Components/Products/ProductCardComponent";
 const Category = () => {
+  console.log("render/redendering category");
   const categoriesMap = useSelector(selectCategoriesMap);
 
   const { category } = useParams();
   const [product, setProduct] = useState(categoriesMap[category]);
   useEffect(() => {
+    console.log("effect fired calling setProducts");
     setProduct(categoriesMap[category]);
   }, [category, categoriesMap]);
 
