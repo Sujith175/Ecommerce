@@ -18,11 +18,13 @@ export const categoriesReducer = (state = INITIANL_STATE, action = {}) => {
       return {
         ...state,
         categories: payload,
+        isLoading: false,
       };
     case CATEGORY_ACTION_TYPES.SET_CATEGORIES_FAILURE:
       return {
         ...state,
         error: payload,
+        isLoading: false,
       };
     default:
       return state;

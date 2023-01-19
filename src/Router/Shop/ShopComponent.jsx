@@ -4,10 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import CategoriesPreview from "../CategoriesPreview/CategoryPreviewComponent";
 import Category from "../category/Category";
 import { useDispatch } from "react-redux";
-import {
-  fetchCategoriesAsync,
-  setCategories,
-} from "../../Store/Categories/categoryAction";
+import { fetchCategoriesAsync } from "../../Store/Categories/categoryAction";
 const ShopComponent = () => {
   const dispatch = useDispatch();
   useEffect(() => {
